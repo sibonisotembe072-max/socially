@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+</head>
+<style>
+    body{
+       
+       background: linear-gradient(to left,darkblue,darkred);
+    }
+    ul{
+        display:flex;
+        gap: 10px;
+        list-style:none;
+        flex-wrap: wrap;
+    
+    
+    }
+    ul li{
+        color: white;
+        
+    }
+    ul li a{
+        color: white;
+        text-decoration:none;
+    }
+    .text_box{
+        width:fit-content;
+        height: fit-content;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 10px 10px 10px black;
+
+    }
+    #username{
+        padding:2px;
+        width:fit-content;
+        height:fit-content;
+        background:linear-gradient(to left,darkred,darkblue);
+        color:white;
+        border-radius: 10px;
+    }
+    h2{
+        color:white;
+    }
+    form{
+       position:sticky;
+       bottom:5px;
+    }
+     form button{
+        padding:2px;
+        width:fit-content;
+        height:fit-content;
+        background:linear-gradient(to left,darkred,darkblue);
+        color:white;
+        border-radius: 10px;
+     }
+     form input{
+        padding:2px;
+        width:fit-content;
+        height:fit-content;
+        background:linear-gradient(to left,darkred,darkblue);
+        color:white;
+        border-radius: 10px;
+     }
+       #opt{
+        width:fit-content;
+        height:fit-content;
+        background-color:black;
+        color:white;
+        border-radius: 10px;
+        float:right;
+        top:0;
+       }
+       #view{
+        position:fixed;
+        top: 10px;
+        float:right;
+       }
+
+</style>
+
+<body>
+
+<header>
+    <h2>💖.....Dashboard.....💖..........💖..........💖..........💖</h2>
+
+    <ul>
+
+       
+        <li>
+            Logged in as:
+            <strong>{{ session["username"] }}</strong>
+        </li>
+
+        <li>
+            <a href="{{ url_for('dashboard') }}">
+                Home
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('logout') }}">
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</header>
+
+
+
+<!-- FLASH MESSAGES -->
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+
+    {% if messages %}
+
+        {% for category, message in messages %}
+
+            <div class="flash {{ category }}">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+{% endwith %}
+
+
+
+
+
+
+
+
+
+<!-- MESSAGES -->
+
+{% for i in info %}
+
+    <div >
+
+    
+        
+
+        <div class="text_box">
+            <button id="username">{{ i[0] }}</button><br><br>
+            
+
+            <i style="font-size:large; font-weight: bold;">
+                {{ i[1] }}
+            </i>
+
+            <br><br>
+
+            <small style="font-size: x-small;">
+                {{ i[2] }}
+                
+            </small>
+            
+
+        </div><br>
+
+    </div>
+
+
+
+{% else %}
+
+    <p>
+        No messages yet.
+    </p>
+
+{% endfor %}
+
+
+<!-- SEND MESSAGE -->
+
+<form action="{{ url_for('submit') }}" method="POST">
+
+    <input
+        type="text"
+        name="message"
+        placeholder="Type message"
+        required
+    ><br><br>
+
+    <button type="submit">
+        Send
+    </button>
+
+</form>
+
+
+</body>
+
+</html>

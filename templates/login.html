@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            background: linear-gradient(to left,darkred,darkblue);
+        }
+        form{
+            width:100%;
+            justify-content:center;
+            align-items: center;
+            text-align:center;
+            align-content: center;
+
+        }
+        legend{
+            color:white;
+        }
+        
+        h1{
+            color:white;
+        }
+       
+    </style>
+
+<body>
+
+<h1>Kiddo🌷🌼🌺🌹</h1>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endwith %}
+
+<form method="POST">
+<fieldset>
+    <legend>login 💐🌷</legend>
+    <input
+        type="text"
+        name="username"
+        placeholder="Username"
+        required
+    ><br><br>
+
+    <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        required
+    ><br><br>
+
+    <button type="submit">
+        Login
+    </button>
+</fieldset>
+
+</form>
+
+<p>
+    Don't have an account?
+    <a href="{{ url_for('register') }}">
+        Create profile
+    </a>
+</p>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+     <style>
+        body{
+            margin:0;
+            padding:0;
+            background: linear-gradient(to left,darkred,darkblue);
+        }
+        form{
+            width:100%;
+            justify-content:center;
+            align-items: center;
+            text-align:center;
+            align-content: center;
+
+        }
+        legend{
+            color:white;
+        }
+        
+        h1{
+            color:white;
+        }
+    </style>
+
+<body>
+
+<h1>Kiddo</h1>
+
+<form method="POST">
+    <fieldset>
+        <legend >Create Profile</legend>
+
+    <input
+        type="text"
+        name="username"
+        placeholder="Choose username"
+        required
+    ><br><br>
+
+    <input
+        type="password"
+        name="password"
+        placeholder="Choose password"
+        required
+    ><br><br>
+
+    <button type="submit">
+        Create Profile
+    </button>
+    </fieldset>
+
+</form>
+
+<p>
+    Already have an account?
+    <a href="{{ url_for('login') }}">
+        Login
+    </a>
+</p>
+
+</body>
+
+</html>
